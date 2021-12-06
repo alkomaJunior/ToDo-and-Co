@@ -1,0 +1,50 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js",
+        "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-e79739.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "test": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_parse-int_js-node_modules_dragula_dragula_js.js",
+        "/build/test.js"
+      ]
+    },
+    "admin-lte": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/admin-lte.js"
+      ]
+    },
+    "fontawesome": {
+      "js": [
+        "/build/runtime.js",
+        "/build/fontawesome.js"
+      ]
+    },
+    "admin-lte-jquery": {
+      "js": [
+        "/build/runtime.js",
+        "/build/admin-lte-jquery.js"
+      ]
+    },
+    "admin-lte-bootstrap": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/admin-lte-bootstrap.js"
+      ]
+    }
+  }
+}

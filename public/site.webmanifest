@@ -1,0 +1,22 @@
+// the primary locale of the app as a valid HTML language attribute
+    // (see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
+    "lang": "fr-FR",
+
+    // the name of the web application as it is usually displayed to the user
+    "name": "ToDo & Co",
+    // a shorter variant of the app name to be displayed when there is not
+    // enough space (e.g. as a label for an icon on the phone home screen).
+    "short_name": "ToDo & Co",
+
+    // use it to explain what the application does
+    "description": "ToDo & Co is a to do list application built with Symfony.",
+
+    // the preferred orientation of the web app contents
+    // (see https://developer.mozilla.org/en-US/docs/Web/Manifest/orientation)
+    "orientation": "landscape",
+
+    // determines how much of browser interface is displayed when running the app
+    // "browser" = display the full browser window; "fullscreen" = display no browser interface
+    // (see https://developer.mozilla.org/en-US/docs/Web/Manifest/display)
+    "display": "fullscreen",
+}

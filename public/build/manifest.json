@@ -1,0 +1,17 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/test.js": "/build/test.js",
+  "build/admin-lte.js": "/build/admin-lte.js",
+  "build/fontawesome.js": "/build/fontawesome.js",
+  "build/admin-lte-jquery.js": "/build/admin-lte-jquery.js",
+  "build/admin-lte-bootstrap.js": "/build/admin-lte-bootstrap.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors-node_modules_jquery_dist_jquery_js.js": "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+  "build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-e79739.js": "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-e79739.js",
+  "build/vendors-node_modules_dragula_dragula_js.js": "/build/vendors-node_modules_dragula_dragula_js.js",
+  "build/app/images/logo.png": "/build/app/images/logo.png",
+  "build/app/images/default-pp.png": "/build/app/images/default-pp.png",
+  "build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js": "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js",
+  "build/vendors-node_modules_core-js_modules_es_parse-int_js-node_modules_dragula_dragula_js.js": "/build/vendors-node_modules_core-js_modules_es_parse-int_js-node_modules_dragula_dragula_js.js"
+}
