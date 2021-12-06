@@ -2,47 +2,48 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/102.21e1c153.js",
-        "/build/885.f18b8bbd.js",
-        "/build/app.2815090d.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js",
+        "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-e79739.js",
+        "/build/app.js"
       ],
       "css": [
-        "/build/app.85c85f3b.css"
-      ]
-    },
-    "admin-lte": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/admin-lte.5092ccc8.js"
-      ]
-    },
-    "fontawesome": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/fontawesome.2d0878c7.js"
-      ]
-    },
-    "admin-lte-jquery": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/admin-lte-jquery.db91f9aa.js"
-      ]
-    },
-    "admin-lte-bootstrap": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/admin-lte-bootstrap.a9ab5662.js"
+        "/build/app.css"
       ]
     },
     "test": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/102.21e1c153.js",
-        "/build/test.eab34d0c.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js.js",
+        "/build/vendors-node_modules_core-js_modules_es_parse-int_js-node_modules_dragula_dragula_js.js",
+        "/build/test.js"
+      ]
+    },
+    "admin-lte": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/admin-lte.js"
+      ]
+    },
+    "fontawesome": {
+      "js": [
+        "/build/runtime.js",
+        "/build/fontawesome.js"
+      ]
+    },
+    "admin-lte-jquery": {
+      "js": [
+        "/build/runtime.js",
+        "/build/admin-lte-jquery.js"
+      ]
+    },
+    "admin-lte-bootstrap": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/admin-lte-bootstrap.js"
       ]
     }
   }
