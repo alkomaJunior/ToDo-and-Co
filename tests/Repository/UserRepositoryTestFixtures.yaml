@@ -1,0 +1,11 @@
+App\Entity\User:
+  user{1..10}:
+    email: user<current()>\@domain.com
+    firstName: userLastName<current()>
+    lastName: userFirstName<current()>
+    accountType: SimpleUser
+    location: userLocation
+    contact: "user contact"
+    password: "\\$argon2i\\$v=19\\$m=16,t=2,p=1\\$dzdLa2pvMjhGVGcwM081Yw\\$lNxz8fPeNKDxahLlQf7QqQ"
+    roles: "[ROLE_USER]"
+    slug: user<current()>
