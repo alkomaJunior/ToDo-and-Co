@@ -1,0 +1,19 @@
+App\Entity\User:
+  user:
+    email: anonym\@domain.com
+    firstName: anonym
+    lastName: anonym
+    accountType: SimpleUser
+    location: anonym
+    contact: anonym
+    password: "\\$argon2i\\$v=19\\$m=16,t=2,p=1\\$dzdLa2pvMjhGVGcwM081Yw\\$lNxz8fPeNKDxahLlQf7QqQ"
+    roles: "[ROLE_USER]"
+    slug: anonym
+
+App\Entity\Task:
+  task{1..10}:
+    title: task<current()>
+    description: task<current()> description
+    status: task<current()> status
+    slug: task<current()>
+    user: "@user"
