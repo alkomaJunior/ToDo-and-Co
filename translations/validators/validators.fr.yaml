@@ -1,0 +1,11 @@
+validator.message.notBlank: Ce champ ne doit pas être vide
+validator.message.email: Cette adresse mail n'est pas valide
+validator.message.tooShortMessage: Ce mot de passe est trop court
+validator.message.missingLettersMessage: Ce mot de passe doit contenir au moins une lettre
+validator.message.requireCaseDiffMessage: Ce mot de passe doit contenir au moins une lettre majuscule et une minuscule
+validator.message.missingNumbersMessage: Ce mot de passe doit contenir au moins un chiffre
+validator.message.missingSpecialCharacterMessage: Ce mot de passe doit contenir au moins un caractère spécial
+validator.message.passwordStrength: Ce mot de passe est faible
+validator.message.repeatedType: Les champs mot de passe doivent être identiques
+validator.message.notCompromisedPassword: Ce mot de passe a été divulgué dans le cadre d'une violation de données, il ne doit pas être utilisé.
+validator.message.maxSizeMessage: Votre image ne doit pas dépasser 3Mo (Les extension acceptées sont png et jpg)

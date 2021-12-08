@@ -3,38 +3,14 @@
     "app": {
       "js": [
         "/build/runtime.f3575a88.js",
+        "/build/755.5a8586e9.js",
         "/build/102.21e1c153.js",
-        "/build/885.f18b8bbd.js",
-        "/build/app.2815090d.js"
+        "/build/454.c5f07fa1.js",
+        "/build/app.360da780.js"
       ],
       "css": [
-        "/build/app.85c85f3b.css"
-      ]
-    },
-    "admin-lte": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/admin-lte.5092ccc8.js"
-      ]
-    },
-    "fontawesome": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/fontawesome.2d0878c7.js"
-      ]
-    },
-    "admin-lte-jquery": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/admin-lte-jquery.db91f9aa.js"
-      ]
-    },
-    "admin-lte-bootstrap": {
-      "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/admin-lte-bootstrap.a9ab5662.js"
+        "/build/454.c7f3a5fa.css",
+        "/build/app.31d6cfe0.css"
       ]
     },
     "test": {
@@ -43,6 +19,21 @@
         "/build/755.5a8586e9.js",
         "/build/102.21e1c153.js",
         "/build/test.eab34d0c.js"
+      ]
+    },
+    "userDataTable": {
+      "js": [
+        "/build/runtime.f3575a88.js",
+        "/build/755.5a8586e9.js",
+        "/build/991.00a2f6bd.js",
+        "/build/userDataTable.282d1480.js"
+      ]
+    },
+    "bs-custom-file": {
+      "js": [
+        "/build/runtime.f3575a88.js",
+        "/build/755.5a8586e9.js",
+        "/build/bs-custom-file.27c420ca.js"
       ]
     }
   }

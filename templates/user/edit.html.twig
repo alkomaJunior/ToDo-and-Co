@@ -1,0 +1,112 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %} {{ user.lastName }} {% endblock %}
+
+{% block body %}
+    <!-- Main Sidebar Container -->
+    {{ include('layouts/partials/_sidebar.html.twig', {'user': 'userActiveClass'}) }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1> {{ 'Add a user'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('user_index') }}"> {{ 'Users'|trans }}</a></li>
+                            <li class="breadcrumb-item active"> {{ user.firstName~' '~user.lastName }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                         alt="User profile picture">
+                                </div>
+
+                                <h3 class="profile-username text-center">{{ user.firstName~' '~user.lastName }}</h3>
+
+                                <p class="text-muted text-center">{{ user.accountType }}</p>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">About Me</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <strong><i class="fas fa-envelope mr-1"></i>{{ 'Email address'|trans }}</strong>
+
+                                <p class="text-muted">{{ user.email }}</p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i>{{ 'Location'|trans }}</strong>
+
+                                <p class="text-muted">{{ user.location }}</p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-phone-alt mr-1"></i>Contact</strong>
+
+                                <p class="text-muted">{{ user.contact }}</p>
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link active" href="#edit-user" data-toggle="tab">Edit User</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#update-pass" data-toggle="tab">Update password</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <!-- .tab-pane -->
+                                    <div class="active tab-pane" id="edit-user">
+                                        {{ include('user/_form.html.twig') }}
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <!-- .tab-pane -->
+                                    <div class="active tab-pane" id="update-pass">
+
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+{% endblock %}

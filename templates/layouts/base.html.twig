@@ -11,7 +11,6 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
             {{ encore_entry_link_tags('app') }}
-            {{ encore_entry_script_tags('fontawesome') }}
         {% endblock %}
     </head>
 
@@ -27,9 +26,6 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            {{ encore_entry_script_tags('admin-lte') }}
-            {{ encore_entry_script_tags('admin-lte-jquery') }}
-            {{ encore_entry_script_tags('admin-lte-bootstrap') }}
         {% endblock %}
     </body>
 </html>

@@ -21,12 +21,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('admin-lte', 'admin-lte/dist/js/adminlte')
-    .addEntry('fontawesome', '@fortawesome/fontawesome-free/js/all')
-    .addEntry('admin-lte-jquery', 'admin-lte/plugins/jquery/jquery.js')
-    .addEntry('admin-lte-bootstrap', 'admin-lte/plugins/bootstrap/js/bootstrap.bundle')
 
     .addEntry('test', './assets/js/test.js')
+    .addEntry('userDataTable', './assets/js/userDataTable.js')
+    .addEntry('bs-custom-file', './assets/js/bs-custom-file.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
