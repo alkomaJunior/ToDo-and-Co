@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %} {{ 'Dashboard'|trans }} {% endblock %}
+
+{% block body %}
+    <!-- Main Sidebar Container -->
+    {{ include('layouts/partials/_sidebar.html.twig', {'dashboardActiveClass': 'active'}) }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper kanban">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>{{ 'Dashboard'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}"> {{ 'Dashboard'|trans }}</a></li>
+                            <li class="breadcrumb-item active"> {{ 'Dashboard'|trans }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content pb-3">
+            <div class="container-fluid h-100">
+                <div class="card card-row card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Todo
+                        </h3>
+                    </div>
+                    <div id="todo" class="card-body">
+                        {% for task in tasks %}
+                            {% if task.status == 'todo' %}
+                                <div class="card card-primary card-outline" data-id="{{ task.id }}">
+                                    <div class="card-header">
+                                        <h5 class="card-title">{{ task.title }}</h5>
+                                        <div class="card-tools">
+                                            <a href="#" class="btn btn-tool btn-link">#5</a>
+                                            <a href="#" class="btn btn-tool">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-justify">{{ task.description }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card card-row card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            In progress
+                        </h3>
+                    </div>
+                    <div id="in-progress" class="card-body">
+                        {% for task in tasks %}
+                            {% if task.status == 'in-progress' %}
+                                <div class="card card-primary card-outline" data-id="{{ task.id }}">
+                                    <div class="card-header">
+                                        <h5 class="card-title">{{ task.title }}</h5>
+                                        <div class="card-tools">
+                                            <a href="#" class="btn btn-tool btn-link">#5</a>
+                                            <a href="#" class="btn btn-tool">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-justify">{{ task.description }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card card-row card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Review
+                        </h3>
+                    </div>
+                    <div id="review" class="card-body">
+                        {% for task in tasks %}
+                            {% if task.status == 'review' %}
+                                <div class="card card-primary card-outline" data-id="{{ task.id }}">
+                                    <div class="card-header">
+                                        <h5 class="card-title">{{ task.title }}</h5>
+                                        <div class="card-tools">
+                                            <a href="#" class="btn btn-tool btn-link">#5</a>
+                                            <a href="#" class="btn btn-tool">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-justify">{{ task.description }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card card-row card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Done
+                        </h3>
+                    </div>
+                    <div id="done" class="card-body">
+                        {% for task in tasks %}
+                            {% if task.status == 'done' %}
+                                <div class="card card-primary card-outline" data-id="{{ task.id }}">
+                                    <div class="card-header">
+                                        <h5 class="card-title">{{ task.title }}</h5>
+                                        <div class="card-tools">
+                                            <a href="#" class="btn btn-tool btn-link">#5</a>
+                                            <a href="#" class="btn btn-tool">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-justify">{{ task.description }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% block script %}
+        {{ encore_entry_script_tags('dashboard') }}
+    {% endblock %}
+{% endblock %}

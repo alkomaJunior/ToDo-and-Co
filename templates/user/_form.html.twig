@@ -1,0 +1,77 @@
+{{ form_start(form) }}
+    <style>
+        .custom-file-input:lang(en)~.custom-file-label:after {
+            content: "{{ 'Browse'|trans }}";
+        }
+        legend {
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="form-group">
+        <i class="fa fa-mail-bulk"></i>&nbsp;&nbsp;
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+    <div class="form-group">
+        <i class="fa fa-id-card"></i>&nbsp;&nbsp;
+        {{ form_label(form.firstName) }}
+        {{ form_widget(form.firstName) }}
+    </div>
+    <div class="form-group">
+        <i class="fa fa-id-card"></i>&nbsp;&nbsp;
+        {{ form_label(form.lastName) }}
+        {{ form_widget(form.lastName) }}
+    </div>
+    <div class="row" {% if 'edit' in app.request.pathInfo %} style="display: none" {% endif %}>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-key"></i>&nbsp;&nbsp;
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-key"></i>&nbsp;&nbsp;
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <i class="fa fa-user-secret"></i>&nbsp;&nbsp;
+        {{ form_label(form.accountType) }}
+        {{ form_widget(form.accountType) }}
+    </div>
+    <div class="form-group">
+        <i class="fa fa-phone-alt"></i>&nbsp;&nbsp;
+        {{ form_label(form.contact) }}
+        {{ form_widget(form.contact) }}
+    </div>
+    <div class="form-group">
+        <i class="fa fa-search-location"></i>&nbsp;&nbsp;
+        {{ form_label(form.location) }}
+        {{ form_widget(form.location) }}
+    </div>
+    <div class="form-group pb-2">
+        <label class="col-form-label">
+            <i class="fa fa-image"></i>&nbsp;&nbsp;
+            Avatar
+        </label>
+        {{ form_widget(form.avatarFile) }}
+        {{ form_label(form.avatarFile) }}
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6 pb-3">
+            <button type="submit" id="addUser" class="btn btn-primary btn-block" formnovalidate><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;{{ 'Add a user'|trans }}</button>
+        </div>
+        <div class="col-md-6">
+            <button type="reset" class="btn btn-secondary btn-block"><i class="fa fa-ban"></i>&nbsp;&nbsp;{{ 'Cancel'|trans }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}
+
+{% block script %}
+    {{ encore_entry_script_tags('bs-custom-file') }}
+{% endblock %}

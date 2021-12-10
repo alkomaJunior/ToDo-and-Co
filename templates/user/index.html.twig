@@ -1,0 +1,123 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %} {{ 'User list'|trans }} {% endblock %}
+
+{% block body %}
+    <!-- Main Sidebar Container -->
+    {{ include('layouts/partials/_sidebar.html.twig', {'usersActiveClass': 'active'}) }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1> {{ 'User list'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('user_index') }}"> {{ 'Users'|trans }}</a></li>
+                            <li class="breadcrumb-item active"> {{ 'User list'|trans }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="{{ path('user_new') }}" type="button" class="btn btn-outline-primary btn-block">
+                                    <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;
+                                    {{ 'Add a user'|trans }}</a>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="user-data-table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'Firstname'|trans }}</th>
+                                            <th>{{ 'Lastname'|trans }}</th>
+                                            <th>{{ 'Account Type'|trans }}</th>
+                                            <th>{{ 'Email address'|trans }}</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       {% for user in users %}
+                                           <tr>
+                                               <td>{{ user.firstName }}</td>
+                                               <td>{{ user.lastName }}</td>
+                                               <td>{{ user.accountType }}</td>
+                                               <td>{{ user.email }}</td>
+                                               <td class="text-center">
+                                                   <a href="{{ path('user_edit', {'slug': user.slug}) }}" class="btn btn-outline-secondary">
+                                                       <i class="fas fa-eye"></i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fas fa-edit"></i>
+                                                   </a>
+                                                   <button onclick="deleteConfirmation();" class="btn btn-outline-danger">
+                                                       <i class="fas fa-trash"></i>
+                                                   </button>
+                                               </td>
+                                           </tr>
+                                           <script>
+                                               function deleteConfirmation(){
+                                                   Swal.fire({
+                                                       title: '{{ 'Are you sure?'|trans }}',
+                                                       showDenyButton: true,
+                                                       showCancelButton: true,
+                                                       showConfirmButton: false,
+                                                       denyButtonText: `Delete`,
+                                                   }).then((result) => {
+                                                       if (result.isDenied) {
+                                                           Swal.fire('{{ 'Deletion success!'|trans }}', '', 'success').then(result => {
+                                                               jQuery.ajax({
+                                                                   url: '{{ path('user_delete', {'slug': user.slug}) }}',
+                                                                   method: 'POST',
+                                                                   data: {_token:"{{ csrf_token('delete' ~ user.slug) }}"},
+                                                                   success: function (data){
+                                                                       location.reload();
+                                                                   }
+                                                               })
+                                                           })
+                                                       }
+                                                   })
+                                               }
+                                           </script>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>{{ 'Firstname'|trans }}</th>
+                                            <th>{{ 'Lastname'|trans }}</th>
+                                            <th>{{ 'Account Type'|trans }}</th>
+                                            <th>{{ 'Email address'|trans }}</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <script src=""></script>
+
+    {% block script %}
+        {{ encore_entry_script_tags('userDataTable') }}
+    {% endblock %}
+
+{% endblock %}

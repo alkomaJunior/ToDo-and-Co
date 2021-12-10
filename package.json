@@ -15,13 +15,18 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "phptest": "php ./vendor/bin/phpunit --coverage-html public/code-coverage"
+        "phptest": "php ./vendor/bin/phpunit --coverage-html public/code-coverage",
+        "scc:c": "symfony console cache:clear",
+        "scm:m": "symfony console make:migration",
+        "scd:m:m": "symfony console doctrine:migrations:migrate",
+        "scm:t": "symfony console make:test"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.4",
         "@hotwired/stimulus": "^3.0.1",
         "admin-lte": "3.1",
+        "bs-custom-file-input": "^1.3.4",
         "dragula": "^3.7.3",
-        "jquery": "^3.6.0"
+        "jquery": "^3.6.0",
+        "sweetalert2": "^11.3.0"
     }
 }

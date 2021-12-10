@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\Slug;
 use App\Entity\Traits\Timestampable;
+use App\Entity\Traits\UserAvatar;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +17,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[
     ORM\Entity(repositoryClass: UserRepository::class),
@@ -23,10 +25,14 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
     ORM\HasLifecycleCallbacks,
     UniqueEntity("email")
  ]
+/**
+ * @Vich\Uploadable
+ */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use Timestampable;
     use Slug;
+    use UserAvatar;
 
     #[
         ORM\Id,
@@ -37,8 +43,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[
         ORM\Column(type: "string", length: 180, unique: true),
-        NotBlank,
-        Email
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing']),
+        Email(message: 'validator.message.email', groups: ['user_creation', 'user_editing'])
      ]
     private ?string $email;
 
@@ -54,45 +60,57 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $password;
 
     #[
-        NotBlank,
-        RollerworksPassword\PasswordStrength(minStrength: 4, minLength: 8),
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation']),
+        RollerworksPassword\PasswordStrength(
+            groups: ['user_creation'],
+            minStrength: 4,
+            minLength: 8,
+            message: 'validator.message.passwordStrength',
+            tooShortMessage: 'validator.message.passwordStrength'
+        ),
         RollerworksPassword\PasswordRequirements(
+            groups: ['user_creation'],
             requireLetters: true,
             requireCaseDiff: true,
             requireNumbers: true,
-            requireSpecialCharacter: true
+            requireSpecialCharacter: true,
+            tooShortMessage: 'validator.message.tooShortMessage',
+            missingLettersMessage: 'validator.message.missingLettersMessage',
+            requireCaseDiffMessage: 'validator.message.requireCaseDiffMessage',
+            missingNumbersMessage: 'validator.message.missingNumbersMessage',
+            missingSpecialCharacterMessage: 'validator.message.missingSpecialCharacterMessage'
         ),
-        NotCompromisedPassword
+        NotCompromisedPassword(message: 'validator.message.notCompromisedPassword', groups: ['user_creation'])
      ]
     private string $plainPassword;
 
     #[
         ORM\Column(type: "string", length: 255),
-        NotBlank,
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing']),
      ]
     private ?string $firstName;
 
     #[
         ORM\Column(type: "string", length: 255),
-        NotBlank
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing'])
      ]
     private ?string $lastName;
 
     #[
         ORM\Column(type: "string", length: 50),
-        NotBlank
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing'])
      ]
     private ?string $accountType;
 
     #[
         ORM\Column(type: "string", length: 100),
-        NotBlank
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing'])
      ]
     private ?string $location;
 
     #[
         ORM\Column(type: "string", length: 100),
-        NotBlank
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_editing'])
      ]
     private ?string $contact;
 
@@ -298,6 +316,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @param string $plainPassword
+     * @return User
      */
     public function setPlainPassword(string $plainPassword): self
     {
