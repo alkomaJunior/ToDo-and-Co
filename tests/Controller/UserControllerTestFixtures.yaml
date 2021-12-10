@@ -1,0 +1,22 @@
+App\Entity\User:
+    user1:
+        email: user1\@domain.com
+        firstName: user1LastName
+        lastName: user1FirstName
+        accountType: SimpleUser
+        location: user1Location
+        contact: "user1 contact"
+        password: "\\$argon2i\\$v=19\\$m=16,t=2,p=1\\$dzdLa2pvMjhGVGcwM081Yw\\$lNxz8fPeNKDxahLlQf7QqQ"
+        roles: "[ROLE_USER]"
+        slug: user1
+
+    user2:
+        email: user2\@domain.com
+        firstName: user2LastName
+        lastName: user2FirstName
+        accountType: Administrator
+        location: user2Location
+        contact: "user2 contact"
+        password: "\\$argon2i\\$v=19\\$m=16,t=2,p=1\\$dzdLa2pvMjhGVGcwM081Yw\\$lNxz8fPeNKDxahLlQf7QqQ"
+        roles: "[ROLE_USER, ROLE_ADMIN]"
+        slug: user2
