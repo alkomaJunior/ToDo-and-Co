@@ -4,21 +4,21 @@
       "js": [
         "/build/runtime.f3575a88.js",
         "/build/755.5a8586e9.js",
-        "/build/102.21e1c153.js",
+        "/build/342.930e7ff0.js",
         "/build/454.c5f07fa1.js",
-        "/build/app.360da780.js"
+        "/build/app.282302ea.js"
       ],
       "css": [
         "/build/454.c7f3a5fa.css",
         "/build/app.31d6cfe0.css"
       ]
     },
-    "test": {
+    "dashboard": {
       "js": [
         "/build/runtime.f3575a88.js",
         "/build/755.5a8586e9.js",
-        "/build/102.21e1c153.js",
-        "/build/test.eab34d0c.js"
+        "/build/342.930e7ff0.js",
+        "/build/dashboard.e0c1d147.js"
       ]
     },
     "userDataTable": {

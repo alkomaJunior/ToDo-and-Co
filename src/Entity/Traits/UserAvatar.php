@@ -23,7 +23,7 @@ trait UserAvatar
         mimeTypesMessage: 'validator.message.maxSizeMessage',
         groups: ['user_creation', 'user_editing']
     )]
-    private ?File $avatarFile;
+    private ?File $avatarFile = null;
 
     #[ORM\Column(type: "string", length: 50, nullable: true)]
     private ?string $status;

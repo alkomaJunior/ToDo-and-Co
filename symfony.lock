@@ -5,6 +5,9 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99.4"
     },
+    "dbrekelmans/bdi": {
+        "version": "1.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -441,6 +444,18 @@
     "symfony/intl": {
         "version": "v5.3.11"
     },
+    "symfony/lock": {
+        "version": "5.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.2",
+            "ref": "a1c8800e40ae735206bb14586fdd6c4630a51b8d"
+        },
+        "files": [
+            "./config/packages/lock.yaml"
+        ]
+    },
     "symfony/mailer": {
         "version": "5.3",
         "recipe": {
@@ -559,6 +574,9 @@
         "version": "v5.3.8"
     },
     "symfony/proxy-manager-bridge": {
+        "version": "v5.3.11"
+    },
+    "symfony/rate-limiter": {
         "version": "v5.3.11"
     },
     "symfony/routing": {
@@ -719,6 +737,9 @@
         "version": "1.2.1"
     },
     "twig/extra-bundle": {
+        "version": "v3.3.4"
+    },
+    "twig/intl-extra": {
         "version": "v3.3.4"
     },
     "twig/twig": {

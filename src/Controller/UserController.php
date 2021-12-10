@@ -41,7 +41,7 @@ class UserController extends AbstractController
 
             ($user->getAccountType() === "Simple user") ?
                 $user->setRoles(["ROLE_USER"]) :
-                $user->setRoles(["ROLE_ADMIN"]);
+                $user->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
 
             $user->setSlug(strtolower($user->getFirstName() . $user->getLastName()));
 

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="{{ asset('build/app/images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">ToDo&Co</span>
     </a>
 
     <!-- Sidebar -->
@@ -11,10 +11,15 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('build/app/images/default-pp.png')|imagine_filter('avatar_sidebar') }}" class="img-circle elevation-2" alt="User Image">
+                <img src="{% if app.user.avatar is not null %}
+                               {{ vich_uploader_asset(app.user, 'avatarFile')|imagine_filter('avatar_sidebar') }}
+                          {% else %}
+                               {{ asset('build/app/images/default-pp.png')|imagine_filter('avatar_sidebar') }}
+                          {% endif %}
+                    " class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{ app.user.firstName~' '~app.user.lastName }}</a>
             </div>
         </div>
 
@@ -24,13 +29,31 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="{{ path('app_dashboard') }}" class="nav-link {{ dashboardActiveClass ?? "" }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Simple Link
+                            {{ 'Dashboard'|trans }}
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ path('task_index') }}" class="nav-link {{ tasksActiveClass ?? '' }}">
+                        <i class="nav-icon fas fa-tasks"></i>
+                        <p>
+                            {{ 'My tasks'|trans }}
+                        </p>
+                    </a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a href="{{ path('user_index') }}" class="nav-link {{ usersActiveClass ?? '' }}">
+                            <i class="nav-icon fas fa-user-alt-slash"></i>
+                            <p>
+                                {{ 'Users'|trans }}
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -14,18 +14,20 @@
         {% endblock %}
     </head>
 
-    <body class="hold-transition sidebar-mini">
-        <div class="wrapper">
-            <!-- Navbar -->
-            {{ include('layouts/partials/_navbar.html.twig') }}
-            <!-- /.navbar -->
-            {% block body %}{% endblock %}
-            <!-- Main Footer -->
-            {{ include('layouts/partials/_footer.html.twig') }}
-        </div>
+    {% block general %}
+        <body class="hold-transition sidebar-mini">
+            <div class="wrapper">
+                <!-- Navbar -->
+                {{ include('layouts/partials/_navbar.html.twig') }}
+                <!-- /.navbar -->
+                {% block body %}{% endblock %}
+                <!-- Main Footer -->
+                {{ include('layouts/partials/_footer.html.twig') }}
+            </div>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </body>
+            {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+            {% endblock %}
+        </body>
+    {% endblock %}
 </html>

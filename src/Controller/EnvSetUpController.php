@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EnvSetUpController extends AbstractController
 {
-    #[Route('/', name: 'env_set_up')]
+    #[Route('/test', name: 'env_set_up')]
     public function index(TaskRepository $taskRepository): Response
     {
         return $this->render('env_set_up/index.html.twig', [

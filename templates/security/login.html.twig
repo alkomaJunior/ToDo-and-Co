@@ -1,0 +1,97 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %} {{ 'Login'|trans }} {% endblock %}
+
+{% block general %}
+    <body class="hold-transition login-page" style=" background: linear-gradient(to right, #2c3e50, #4ca1af); ">
+        <div class="login-box">
+            <div class="login-logo">
+                <img src="{{ asset('build/app/images/logo.png') }}"> <br>
+                <a href="{{ path('home') }}" class="text-white"><b>ToDo&</b>Co</a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="card">
+                <div class="card-body login-card-body rounded rounded-pill">
+                    <p class="login-box-msg">{{ 'Please sign in'|trans }}</p>
+
+                    <form method="post" class="needs-validation" novalidate>
+                        {% if error %}
+                            <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <div class="input-group mb-3">
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback">
+                                <span class="d-block">
+                                    <span class="form-error-icon badge badge-danger text-uppercase">{{ 'Error'|trans }}</span> <span class="form-error-message font-weight-bold">{{ 'This field is missing'|trans~" "~"And/or"|trans~" "~'This field is not a valid email address'|trans }}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback">
+                                <span class="d-block">
+                                    <span class="form-error-icon badge badge-danger text-uppercase">{{ 'Error'|trans }}</span> <span class="form-error-message font-weight-bold">{{ 'This field is missing'|trans }}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="remember" name="_remember_me">
+                                    <label for="remember">
+                                        {{ 'Remenber me'|trans }}
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-block">{{ 'Login'|trans }}</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                </div>
+                <!-- /.login-card-body -->
+            </div>
+        </div>
+        <!-- /.login-box -->
+    </body>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                let forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                let validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+{% endblock %}
+
+
+

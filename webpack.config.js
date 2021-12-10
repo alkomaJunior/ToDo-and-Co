@@ -22,7 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
 
-    .addEntry('test', './assets/js/test.js')
+    .addEntry('dashboard', './assets/js/dashboard.js')
     .addEntry('userDataTable', './assets/js/userDataTable.js')
     .addEntry('bs-custom-file', './assets/js/bs-custom-file.js')
 
