@@ -95,10 +95,12 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'task_delete', methods: ['POST'])]
+    #[Route('/{slug}', name: 'task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
+        $csrfId = sprintf("delete%s", $task->getSlug());
+
+        if ($this->isCsrfTokenValid($csrfId, $request->request->get('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
         }
