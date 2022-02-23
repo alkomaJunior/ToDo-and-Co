@@ -31,9 +31,9 @@ final class Version20220221163009 extends AbstractMigration
             INSERT INTO users (email, roles, password, first_name, last_name, account_type, location, contact, slug)
             VALUES 
                    (
-                    "marielehmann@todo-and-co.herokuapp.com",
-                    "[\\"ROLE_USER\\", \\"ROLE_ADMIN\\"]",
-                    "$argon2i$v=19$m=16,t=2,p=1$cnVIa1RPamtzVEswcU5QNg$TiPDsX0fKZECZvX+0QI9dg",
+                    "anonyme@todo-and-co.herokuapp.com",
+                    "[]",
+                    "$argon2id$v=19$m=16,t=2,p=1$eXlZeVVuTGtMZ29EcjIxRw$brUu1X3JtDYEPds/XGI5yA",
                     "Anonyme",
                     "ANONYMOUS",
                     "Administrateur",
@@ -41,10 +41,10 @@ final class Version20220221163009 extends AbstractMigration
                     "https://todo-and-co.herokuapp.com/",
                     "Anonymous"
                     ),
-                   (
-                    "anonyme@todo-and-co.herokuapp.com",
-                    "[]",
-                    "$argon2id$v=19$m=16,t=2,p=1$eXlZeVVuTGtMZ29EcjIxRw$brUu1X3JtDYEPds/XGI5yA",
+                    (
+                    "marielehmann@todo-and-co.herokuapp.com",
+                    "[\\"ROLE_USER\\", \\"ROLE_ADMIN\\"]",
+                    "$argon2i$v=19$m=16,t=2,p=1$cnVIa1RPamtzVEswcU5QNg$TiPDsX0fKZECZvX+0QI9dg",
                     "Anonyme",
                     "ANONYMOUS",
                     "Administrateur",
