@@ -45,12 +45,12 @@ final class Version20220221163009 extends AbstractMigration
                     "marielehmann@todo-and-co.herokuapp.com",
                     "[\\"ROLE_USER\\", \\"ROLE_ADMIN\\"]",
                     "$argon2i$v=19$m=16,t=2,p=1$cnVIa1RPamtzVEswcU5QNg$TiPDsX0fKZECZvX+0QI9dg",
-                    "Anonyme",
-                    "ANONYMOUS",
+                    "Marie",
+                    "LEHMANN",
                     "Administrateur",
-                    "https://todo-and-co.herokuapp.com/",
-                    "https://todo-and-co.herokuapp.com/",
-                    "Anonymous"
+                    "Strasbourg, France",
+                    "+33 09 87 65 45",
+                    "marielehmann"
                     );
         ');
 
