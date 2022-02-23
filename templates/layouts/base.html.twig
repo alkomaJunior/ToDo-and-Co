@@ -16,6 +16,7 @@
 
     {% block general %}
         <body class="hold-transition sidebar-mini">
+            {{ include('layouts/partials/_flashMessage.html.twig') }}
             <div class="wrapper">
                 <!-- Navbar -->
                 {{ include('layouts/partials/_navbar.html.twig') }}

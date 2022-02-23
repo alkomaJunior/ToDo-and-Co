@@ -17,8 +17,6 @@ class TaskEntityTest extends KernelTestCase
             ->setDescription("Task 1 description")
             ->setStatus("todo")
             ->setSlug("username")
-            ->setStartAt(new DateTimeImmutable())
-            ->setEndAt(new DateTimeImmutable())
             ->setCreatedAt(new DateTimeImmutable())
             ->setUpdatedAt(new DateTimeImmutable())
             ;
@@ -68,8 +66,6 @@ class TaskEntityTest extends KernelTestCase
         $this->assertIsString($task->getStatus());
         $this->assertIsString($task->getSlug());
         $this->assertIsObject($task->setUser($user)->getUser());
-        $this->assertIsObject($task->getEndAt());
-        $this->assertIsObject($task->getStartAt());
         $this->assertIsObject($task->getCreatedAt());
         $this->assertIsObject($task->getUpdatedAt());
     }

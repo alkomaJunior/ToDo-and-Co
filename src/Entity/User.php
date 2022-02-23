@@ -13,6 +13,7 @@ use JetBrains\PhpStorm\Pure;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
@@ -28,7 +29,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @Vich\Uploadable
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     use Timestampable;
     use Slug;
@@ -60,16 +61,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $password;
 
     #[
-        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation']),
+        NotBlank(message: 'validator.message.notBlank', groups: ['user_creation', 'user_password_update']),
         RollerworksPassword\PasswordStrength(
-            groups: ['user_creation'],
+            groups: ['user_creation', 'user_password_update'],
             minStrength: 4,
             minLength: 8,
             message: 'validator.message.passwordStrength',
             tooShortMessage: 'validator.message.passwordStrength'
         ),
         RollerworksPassword\PasswordRequirements(
-            groups: ['user_creation'],
+            groups: ['user_creation', 'user_password_update'],
             requireLetters: true,
             requireCaseDiff: true,
             requireNumbers: true,
@@ -80,9 +81,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             missingNumbersMessage: 'validator.message.missingNumbersMessage',
             missingSpecialCharacterMessage: 'validator.message.missingSpecialCharacterMessage'
         ),
-        NotCompromisedPassword(message: 'validator.message.notCompromisedPassword', groups: ['user_creation'])
+        NotCompromisedPassword(
+            message: 'validator.message.notCompromisedPassword',
+            groups: ['user_creation', 'user_password_update']
+        )
      ]
     private string $plainPassword;
+
+    #[
+        UserPassword(message: 'validator.message.wrongOldPassword', groups: ['user_password_update'])
+     ]
+    private string $adminPassword;
 
     #[
         ORM\Column(type: "string", length: 255),
@@ -323,5 +332,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = $plainPassword;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdminPassword(): string
+    {
+        return $this->adminPassword;
+    }
+
+    /**
+     * @param string $adminPassword
+     */
+    public function setAdminPassword(string $adminPassword): void
+    {
+        $this->adminPassword = $adminPassword;
+    }
+
+    public function serialize(): string
+    {
+        empty($this->id) ? $this->id = 1 : $this->id = $this->getId();
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($data)
+    {
+
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            ) = unserialize($data);
     }
 }

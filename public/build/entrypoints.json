@@ -2,38 +2,45 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/342.930e7ff0.js",
-        "/build/454.c5f07fa1.js",
-        "/build/app.282302ea.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js--b4071d.js",
+        "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-325eab.js",
+        "/build/app.js"
       ],
       "css": [
-        "/build/454.c7f3a5fa.css",
-        "/build/app.31d6cfe0.css"
+        "/build/vendors-node_modules_hotwired_stimulus_dist_stimulus_js-node_modules_symfony_stimulus-bridge_-325eab.css",
+        "/build/app.css"
       ]
     },
     "dashboard": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/342.930e7ff0.js",
-        "/build/dashboard.e0c1d147.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_core-js_internals_export_js-node_modules_core-js_internals_to-string_js--b4071d.js",
+        "/build/dashboard.js"
+      ]
+    },
+    "edit-user-forms": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/edit-user-forms.js"
       ]
     },
     "userDataTable": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/991.00a2f6bd.js",
-        "/build/userDataTable.282d1480.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/vendors-node_modules_admin-lte_plugins_datatables-bs4_js_dataTables_bootstrap4_min_js-node_mo-5233b6.js",
+        "/build/userDataTable.js"
       ]
     },
     "bs-custom-file": {
       "js": [
-        "/build/runtime.f3575a88.js",
-        "/build/755.5a8586e9.js",
-        "/build/bs-custom-file.27c420ca.js"
+        "/build/runtime.js",
+        "/build/vendors-node_modules_jquery_dist_jquery_js.js",
+        "/build/bs-custom-file.js"
       ]
     }
   }

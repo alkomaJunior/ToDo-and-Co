@@ -6,6 +6,7 @@ use App\Entity\Task;
 use App\Entity\User;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserEntityTest extends KernelTestCase
@@ -39,6 +40,9 @@ class UserEntityTest extends KernelTestCase
         $this->assertHasErrors($this->getEntity(), 0);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testGettersSetters()
     {
         $user = $this->getEntity();
@@ -47,16 +51,14 @@ class UserEntityTest extends KernelTestCase
             (new Task())
                 ->setTitle("Task 1")
                 ->setDescription("Task 1 description")
-                ->setStatus("todo")
-                ->setStartAt(new DateTimeImmutable())
-                ->setEndAt(new DateTimeImmutable()),
+                ->setStatus("todo"),
             (new Task())
                 ->setTitle("Task 2")
                 ->setDescription("Task 2 description")
                 ->setStatus("in-progress")
-                ->setStartAt(new DateTimeImmutable())
-                ->setEndAt(new DateTimeImmutable())
         ];
+
+        $file = new File(__DIR__ . '/favicon.ico');
 
         $this->assertIsString($user->getUserIdentifier());
         $this->assertIsString($user->getPlainPassword());
@@ -76,5 +78,9 @@ class UserEntityTest extends KernelTestCase
         $this->assertEquals('', $user->eraseCredentials()->getPlainPassword());
         $this->assertIsObject($user->addTask($tasks[0])->getTasks());
         $this->assertCount(0, $user->removeTask($tasks[0])->getTasks());
+        $this->assertNull($user->setAvatarFile($file));
+        $this->assertNull($user->setAvatar(null));
+        $this->assertNotEmpty($user->serialize());
+        $this->assertNull($user->unserialize($user->serialize()));
     }
 }

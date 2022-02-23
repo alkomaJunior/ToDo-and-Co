@@ -1,11 +1,57 @@
-<!DOCTYPE html>
+{% extends 'layouts/base.html.twig' %}
 
-<title>New Task</title>
+{% block title %} {{ 'Add a task'|trans }} {% endblock %}
 
 {% block body %}
-    <h1>Create new Task</h1>
+    <!-- Main Sidebar Container -->
+    {{ include('layouts/partials/_sidebar.html.twig', {'tasksActiveClass': 'active'}) }}
 
-    {{ include('task/_form.html.twig') }}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1> {{ 'Add a task'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}"> {{ 'Dashboard'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('task_index') }}"> {{ 'My tasks'|trans }}</a></li>
+                            <li class="breadcrumb-item active"> {{ 'Add a task'|trans }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <a href="{{ path('task_index') }}">back to list</a>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- right column -->
+                    <div class="col-lg-12">
+                        <!-- general form elements disabled -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-user-alt"></i>&nbsp;&nbsp;
+                                    {{ 'Form creation'|trans|upper }}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                {{ include('task/_form.html.twig') }}
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
 {% endblock %}

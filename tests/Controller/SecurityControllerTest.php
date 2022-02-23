@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 
+use App\Controller\SecurityController;
 use App\Repository\UserRepository;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
@@ -59,5 +60,26 @@ class SecurityControllerTest extends WebTestCase
             $this->getContainer()->get(TranslatorInterface::class)->trans('Dashboard')
         );
         $this->assertResponseIsSuccessful();
+    }
+
+    public function testLogout(): void
+    {
+        $this->authenticateUser();
+
+        $sc = new SecurityController();
+
+        $this->client->request('GET', '/logout');
+
+        $this->assertResponseRedirects('http://localhost/');
+        $this->assertNull($sc->logout());
+    }
+
+    public function testHomeForAuthUser(): void
+    {
+        $this->authenticateUser();
+
+        $this->client->request('GET', '/');
+
+        $this->assertResponseRedirects('/task/dashboard');
     }
 }

@@ -1,0 +1,41 @@
+{{ form_start(formPwd) }}
+
+    <style>
+        legend {
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="form-group">
+        <i class="fa fa-mail-bulk"></i>&nbsp;&nbsp;
+        {{ form_label(formPwd.adminPassword, 'Admin password'|trans) }}
+        {{ form_widget(formPwd.adminPassword) }}
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-key"></i>&nbsp;&nbsp;
+                {{ form_label(formPwd.plainPassword.first, 'New password'|trans) }}
+                {{ form_widget(formPwd.plainPassword.first) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-key"></i>&nbsp;&nbsp;
+                {{ form_label(formPwd.plainPassword.second, 'Please confirm your password'|trans) }}
+                {{ form_widget(formPwd.plainPassword.second) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-6 pb-3">
+            <button type="submit" id="{{ Action|default('Update password'|trans) }}" class="btn btn-primary btn-block" formnovalidate><i class="fa fa-user-edit"></i>&nbsp;&nbsp;{{ Action|default('Update password'|trans) }}</button>
+        </div>
+        <div class="col-md-6">
+            <button type="reset" class="btn btn-secondary btn-block"><i class="fa fa-ban"></i>&nbsp;&nbsp;{{ 'Cancel'|trans }}</button>
+        </div>
+    </div>
+
+{{ form_end(formPwd) }}

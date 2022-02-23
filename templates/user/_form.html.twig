@@ -1,6 +1,6 @@
 {{ form_start(form) }}
     <style>
-        .custom-file-input:lang(en)~.custom-file-label:after {
+        .custom-file-label:after {
             content: "{{ 'Browse'|trans }}";
         }
         legend {
@@ -10,38 +10,38 @@
 
     <div class="form-group">
         <i class="fa fa-mail-bulk"></i>&nbsp;&nbsp;
-        {{ form_label(form.email) }}
+        {{ form_label(form.email, 'Email address'|trans) }}
         {{ form_widget(form.email) }}
     </div>
     <div class="form-group">
         <i class="fa fa-id-card"></i>&nbsp;&nbsp;
-        {{ form_label(form.firstName) }}
+        {{ form_label(form.firstName, 'Firstname'|trans) }}
         {{ form_widget(form.firstName) }}
     </div>
     <div class="form-group">
         <i class="fa fa-id-card"></i>&nbsp;&nbsp;
-        {{ form_label(form.lastName) }}
+        {{ form_label(form.lastName, 'Lastname'|trans) }}
         {{ form_widget(form.lastName) }}
     </div>
     <div class="row" {% if 'edit' in app.request.pathInfo %} style="display: none" {% endif %}>
         <div class="col-md-6">
             <div class="form-group">
                 <i class="fa fa-key"></i>&nbsp;&nbsp;
-                {{ form_label(form.plainPassword.first) }}
+                {{ form_label(form.plainPassword.first, 'Password'|trans) }}
                 {{ form_widget(form.plainPassword.first) }}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <i class="fa fa-key"></i>&nbsp;&nbsp;
-                {{ form_label(form.plainPassword.second) }}
+                {{ form_label(form.plainPassword.second, 'Please confirm your password'|trans) }}
                 {{ form_widget(form.plainPassword.second) }}
             </div>
         </div>
     </div>
     <div class="form-group">
         <i class="fa fa-user-secret"></i>&nbsp;&nbsp;
-        {{ form_label(form.accountType) }}
+        {{ form_label(form.accountType, 'Account Type'|trans) }}
         {{ form_widget(form.accountType) }}
     </div>
     <div class="form-group">
@@ -51,7 +51,7 @@
     </div>
     <div class="form-group">
         <i class="fa fa-search-location"></i>&nbsp;&nbsp;
-        {{ form_label(form.location) }}
+        {{ form_label(form.location, 'Location'|trans) }}
         {{ form_widget(form.location) }}
     </div>
     <div class="form-group pb-2">
@@ -64,7 +64,7 @@
     </div>
     <div class="form-group row">
         <div class="col-md-6 pb-3">
-            <button type="submit" id="addUser" class="btn btn-primary btn-block" formnovalidate><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;{{ 'Add a user'|trans }}</button>
+            <button type="submit" id="{{ Action|default('Add a user'|trans) }}" class="btn btn-primary btn-block" formnovalidate><i class="fa fa-check"></i>&nbsp;&nbsp;{{ Action|default('Add a user'|trans) }}</button>
         </div>
         <div class="col-md-6">
             <button type="reset" class="btn btn-secondary btn-block"><i class="fa fa-ban"></i>&nbsp;&nbsp;{{ 'Cancel'|trans }}</button>

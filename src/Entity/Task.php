@@ -39,24 +39,13 @@ class Task
     private ?string $description;
 
     #[
-        ORM\Column(type: "string", length: 50),
-        NotBlank
+        ORM\Column(type: "string", length: 50)
      ]
     private ?string $status;
 
     #[
-        ORM\Column(type: "datetime", nullable: true),
-     ]
-    private ?DateTimeInterface $startAt;
-
-    #[
-        ORM\Column(type: "datetime", nullable: true),
-     ]
-    private ?DateTimeInterface $endAt;
-
-    #[
         ORM\ManyToOne(targetEntity: User::class, inversedBy: "tasks"),
-        ORM\JoinColumn(nullable: false)
+        ORM\JoinColumn(nullable: true),
      ]
     private ?User $user;
 
@@ -97,30 +86,6 @@ class Task
     public function setStatus(string $status): self
     {
         $this->status = $status;
-
-        return $this;
-    }
-
-    public function getStartAt(): ?DateTimeInterface
-    {
-        return $this->startAt;
-    }
-
-    public function setStartAt(?DateTimeInterface $startAt): self
-    {
-        $this->startAt = $startAt;
-
-        return $this;
-    }
-
-    public function getEndAt(): ?DateTimeInterface
-    {
-        return $this->endAt;
-    }
-
-    public function setEndAt(?DateTimeInterface $endAt): self
-    {
-        $this->endAt = $endAt;
 
         return $this;
     }

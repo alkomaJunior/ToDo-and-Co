@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{ path('app_dashboard') }}" class="brand-link">
         <img src="{{ asset('build/app/images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">ToDo&Co</span>
     </a>
@@ -19,7 +19,7 @@
                     " class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ app.user.firstName~' '~app.user.lastName }}</a>
+                <a {% if is_granted('ROLE_ADMIN') %} href="{{ path('user_edit', {'slug': app.user.slug}) }}" {% else %} href="#" {% endif %} class="d-block">{{ app.user.firstName~' '~app.user.lastName }}</a>
             </div>
         </div>
 
@@ -45,6 +45,14 @@
                     </a>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a href="{{ path('anonym_user_tasks') }}" class="nav-link {{ otherTasksActiveClass ?? '' }}">
+                            <i class="nav-icon fas fa-tasks"></i>
+                            <p>
+                                {{ 'Other tasks'|trans }}
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ path('user_index') }}" class="nav-link {{ usersActiveClass ?? '' }}">
                             <i class="nav-icon fas fa-user-alt-slash"></i>

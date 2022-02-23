@@ -4,7 +4,7 @@
 
 {% block body %}
     <!-- Main Sidebar Container -->
-    {{ include('layouts/partials/_sidebar.html.twig', {'tasksActiveclass': 'active'}) }}
+    {{ include('layouts/partials/_sidebar.html.twig', {'tasksActiveClass': 'active'}) }}
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1> {{ 'User list'|trans }}</h1>
+                        <h1> {{ 'Task list'|trans }}</h1>
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ol class="breadcrumb float-sm-right">
@@ -32,46 +32,107 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ path('user_new') }}" type="button" class="btn btn-outline-primary btn-block">
+                                <a href="{{ path('task_new') }}" type="button" class="btn btn-outline-primary btn-block">
                                     <i class="fa fa-plus-circle"></i>&nbsp;&nbsp;
-                                    {{ 'Add a user'|trans }}</a>
+                                    {{ 'Add a task'|trans }}</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="user-data-table" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>{{ 'Users'|trans }}</th>
                                         <th>{{ 'Title'|trans }}</th>
                                         <th>{{ 'Status'|trans }}</th>
-                                        <th>{{ 'Starts at'|trans }}</th>
-                                        <th>{{ 'Ends at'|trans }}</th>
+                                        <th>{{ 'Created at'|trans }}</th>
+                                        <th>{{ 'Updated at'|trans }}</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for task in tasks %}
                                         <tr>
+                                            <td width="10%" class="text-center">
+                                                <u class="list-inline">
+                                                   <li class="list-inline-item">
+                                                       <img src="
+                                                        {% if app.user.avatar is not null %}
+                                                            {{ vich_uploader_asset(app.user, 'avatarFile') }}
+                                                        {% else %}
+                                                           {{ asset('build/app/images/default-pp.png') }}
+                                                        {% endif %}
+                                                       " class="img-circle" width="40" height="40">
+                                                   </li> 
+                                                </u>
+                                            </td>
                                             <td>{{ task.title }}</td>
                                             <td>{{ task.status }}</td>
-                                            <td>{{ task.startAt|format_datetime('medium', 'short') }}</td>
-                                            <td>{{ task.endAt|format_datetime('medium', 'short') }}</td>
+                                            <td>{{ task.createdAt|format_datetime('medium', 'short') }}</td>
+                                            <td>{{ task.updatedAt|format_datetime('medium', 'short') }}</td>
                                             <td class="text-center">
+                                                <a href="#modal-default{{ task.id }}" data-toggle="modal" role="button" class="btn btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
                                                 <a href="{{ path('task_edit', {'slug': task.slug}) }}" class="btn btn-outline-secondary">
-                                                    <i class="fas fa-eye"></i>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fas fa-edit"></i>
+                                                    <i class="fas fa-edit"></i>
                                                 </a>
                                                 <button onclick="deleteConfirmation();" class="btn btn-outline-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
+                                        <script>
+                                            function deleteConfirmation(){
+                                                Swal.fire({
+                                                    title: '{{ 'Are you sure?'|trans }}',
+                                                    showDenyButton: true,
+                                                    showCancelButton: true,
+                                                    showConfirmButton: false,
+                                                    denyButtonText: `{{ 'Delete'|trans }}`,
+                                                    cancelButtonText: `{{ 'Cancel'|trans }}`,
+                                                }).then((result) => {
+                                                    if (result.isDenied) {
+                                                        Swal.fire('{{ 'Deletion success!'|trans }}', '', 'success').then(result => {
+                                                            jQuery.ajax({
+                                                                url: '{{ path('task_delete', {'slug': task.slug}) }}',
+                                                                method: 'POST',
+                                                                data: {_token:"{{ csrf_token('delete' ~ task.slug) }}"},
+                                                                success: function (data){
+                                                                    location.reload();
+                                                                }
+                                                            })
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        </script>
+                                        <div class="modal fade" id="modal-default{{ task.id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">{{ task.title }}</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>{{ task.description }}</p>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal -->
                                     {% endfor %}
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>{{ 'Users'|trans }}</th>
                                         <th>{{ 'Title'|trans }}</th>
                                         <th>{{ 'Status'|trans }}</th>
-                                        <th>{{ 'Starts at'|trans }}</th>
-                                        <th>{{ 'Ends at'|trans }}</th>
+                                        <th>{{ 'Created at'|trans }}</th>
+                                        <th>{{ 'Updated at'|trans }}</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>
