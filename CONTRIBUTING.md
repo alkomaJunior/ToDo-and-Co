@@ -9,7 +9,7 @@ You saw a **bug**? You thought of an awesome **feature**, that we can add to the
 A bug is a concrete error, caused by the present code in this repository.
 
 Follow these instructions:
-1. Do not create an existing report, think to use the [search system](https://github.com/bigboss-oualid/project_8/issues).
+1. Do not create an existing report, think to use the [search system](https://github.com/alkomaJunior/ToDo-and-Co/issues).
 2. Use the ``prod`` or ``dev`` branch to try the existence of the detected bug.
 3. Create a new scénario test with **Behat** or functional test with **PHPUnit**, to identify the bug.
 4. Propose new **[issue](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/creating-an-issue "Creating an issue")**
@@ -36,8 +36,8 @@ Follow this process to propose a pull request that respects best practices:
 1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork and configure the ``remotes``:
 ```bash
 git clone https://github.com/<your-username>/<repo-name>
-cd project_8
-git remote add upstream https://github.com/bigboss-oualid/project_8
+cd todo-and-co
+git remote add upstream https://github.com/alkomaJunior/ToDo-and-Co
 ```
 
 2. If you cloned the project a while ago, remember to update the latest changes from `upstream`:
@@ -49,7 +49,7 @@ git checkout dev
 git pull upstream dev
 ```
 
-3. Follow the [instructions](https://bigboss-oualid.github.io/project_8/github_pages/installation.html) to install the project.
+3. Follow the [instructions](https://github.com/alkomaJunior/ToDo-and-Co/blob/main/README.md) to install the project.
 
 4. Create a new branch that will contain your feature, modification or bug fix :
 * For a **new feature** or **modification** :
@@ -77,7 +77,6 @@ git checkout -b hotfix/<feature-name>
 
 **Types**: write what your commit does.
 * chore: Changes that have an effect on the system (installation of new dependencies, composer, npm, environments, ...).
-* ci: Configure Continuous Integration.
 * docs: changes only in the documentation.
 * feat: a new feature.
 * fix: a bug fix.
@@ -106,8 +105,8 @@ git push origin <branch-name>
 
 
 ## Don't forget
-* use [SOLID](https://openclassrooms.com/fr/courses/6900866-write-maintainable-python-code/7009965-discover-good-programming-practices-with-the-solid-principles) Principles for a good Programming Practices.
-* avoid [STUPID](https://openclassrooms.com/fr/courses/6900866-write-maintainable-python-code/7010365-avoid-stupid-practices-in-programming) Practices in Programming.
+* use [SOLID](https://openclassrooms.com/fr/courses/7415611-ecrivez-du-php-maintenable-avec-les-principes-solid-et-les-design-patterns) Principles for a good Programming Practices.
+* avoid [STUPID](https://openclassrooms.com/fr/courses/7415611-ecrivez-du-php-maintenable-avec-les-principes-solid-et-les-design-patterns/7419681-identifiez-les-mauvaises-pratiques-de-conception-avec-stupid) Practices in Programming.
 * use [Symfony Coding Standards](https://symfony.com/doc/current/contributing/code/standards.html).
 * use [Symfony Coding Conventions](https://symfony.com/doc/current/contributing/code/conventions.html).
 * use [the best practices](https://symfony.com/doc/current/best_practices.html) for developing web applications with Symfony.
@@ -119,6 +118,6 @@ git push origin <branch-name>
 * follow Symfony Directory Structure
     * write your tests in the Top-level ``tests/`` directory.
     * use [Webpack Encore](https://symfony.com/doc/current/frontend.html) to regroup ``JavaScript modules``, pre-processing ``CSS`` & ``JS``, compiling and ``minifying assets``.
-    * try automation process (ci/cd).
+    * try the use of [SymfonyInsight](https://insight.symfony.com/).
 
 ###### Thanks for contributing :wave:
