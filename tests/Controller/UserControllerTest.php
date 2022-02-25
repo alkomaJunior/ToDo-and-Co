@@ -77,12 +77,14 @@ class UserControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/admin/user/new');
 
-        $form = $crawler->selectButton('addUser')->form();
+        $form = $crawler->selectButton(
+            $this->myContainer->get(TranslatorInterface::class)->trans('Add a user')
+        )->form();
 
         $form['user[email]'] = 'user3@domain.com';
         $form['user[firstName]'] = 'user3LastName';
         $form['user[lastName]'] = 'user3FirstName';
-        $form['user[accountType]'] = 'Simple user';
+        $form['user[accountType]'] = $this->myContainer->get(TranslatorInterface::class)->trans('Simple user');
         $form['user[location]'] = 'user3Location';
         $form['user[contact]'] = 'user3 contact';
         $form['user[plainPassword][first]'] = 'f@kePassw0rd';
@@ -101,12 +103,14 @@ class UserControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/admin/user/new');
 
-        $form = $crawler->selectButton('addUser')->form();
+        $form = $crawler->selectButton(
+            $this->myContainer->get(TranslatorInterface::class)->trans('Add a user')
+        )->form();
 
         $form['user[email]'] = 'user4@domain.com';
         $form['user[firstName]'] = 'user4LastName';
         $form['user[lastName]'] = 'user4FirstName';
-        $form['user[accountType]'] = 'Administrator';
+        $form['user[accountType]'] = $this->myContainer->get(TranslatorInterface::class)->trans('Administrator');
         $form['user[location]'] = 'user4Location';
         $form['user[contact]'] = 'user4 contact';
         $form['user[plainPassword][first]'] = 'f@kePassw0rd';
@@ -125,12 +129,13 @@ class UserControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/admin/user/user1/edit');
 
-        $form = $crawler->selectButton('addUser')->form();
+        $form = $crawler->selectButton($this->myContainer
+            ->get(TranslatorInterface::class)->trans('Edit a user'))->form();
 
         $form['user[email]'] = 'user01@domain.com';
         $form['user[firstName]'] = 'user01LastName';
         $form['user[lastName]'] = 'user01FirstName';
-        $form['user[accountType]'] = 'Simple user';
+        $form['user[accountType]'] = $this->myContainer->get(TranslatorInterface::class)->trans('Simple user');
         $form['user[location]'] = 'user01Location';
         $form['user[contact]'] = 'user01 contact';
 
@@ -139,6 +144,49 @@ class UserControllerTest extends WebTestCase
         $this->client->followRedirect();
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+    }
+
+    public function testEditAdmin(): void
+    {
+        $this->authenticateAdmin();
+
+        $crawler = $this->client->request('GET', '/admin/user/user1/edit');
+
+        $form = $crawler->selectButton($this->myContainer
+            ->get(TranslatorInterface::class)->trans('Edit a user'))->form();
+
+        $form['user[email]'] = 'user01@domain.com';
+        $form['user[firstName]'] = 'user01LastName';
+        $form['user[lastName]'] = 'user01FirstName';
+        $form['user[accountType]'] = $this->myContainer->get(TranslatorInterface::class)->trans('Administrator');
+        $form['user[location]'] = 'user01Location';
+        $form['user[contact]'] = 'user01 contact';
+
+        $crawler = $this->client->submit($form);
+
+        $this->client->followRedirect();
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+    }
+
+    public function testEditUserPassword(): void
+    {
+        $this->authenticateAdmin();
+
+        $this->testCreateUser();
+
+        $crawler = $this->client->request('GET', '/admin/user/user3lastnameuser3firstname/edit');
+
+        $form = $crawler->selectButton($this->myContainer
+            ->get(TranslatorInterface::class)->trans('Update password'))->form();
+
+        $form['update_user_password[adminPassword]'] = 'f@kePassw0rd';
+        $form['update_user_password[plainPassword][first]'] = 'f@kePassw0rd';
+        $form['update_user_password[plainPassword][second]'] = 'f@kePassw0rd';
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertResponseRedirects();
     }
 
     public function testDeleteUser(): void

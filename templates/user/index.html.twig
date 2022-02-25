@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ path('user_index') }}"> {{ 'Users'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}"> {{ 'Dashboard'|trans }}</a></li>
                             <li class="breadcrumb-item active"> {{ 'User list'|trans }}</li>
                         </ol>
                     </div>
@@ -50,7 +50,7 @@
                                     </thead>
                                     <tbody>
                                        {% for user in users %}
-                                           <tr>
+                                           <tr {% if user == app.user %} style="display: none" {% endif %}>
                                                <td>{{ user.firstName }}</td>
                                                <td>{{ user.lastName }}</td>
                                                <td>{{ user.accountType }}</td>
@@ -71,7 +71,8 @@
                                                        showDenyButton: true,
                                                        showCancelButton: true,
                                                        showConfirmButton: false,
-                                                       denyButtonText: `Delete`,
+                                                       denyButtonText: `{{ 'Delete'|trans }}`,
+                                                       cancelButtonText: `{{ 'Cancel'|trans }}`,
                                                    }).then((result) => {
                                                        if (result.isDenied) {
                                                            Swal.fire('{{ 'Deletion success!'|trans }}', '', 'success').then(result => {

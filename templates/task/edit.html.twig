@@ -1,13 +1,57 @@
-<!DOCTYPE html>
+{% extends 'layouts/base.html.twig' %}
 
-<title>Edit Task</title>
+{% block title %} {{ 'Edit a task'|trans }} {% endblock %}
 
 {% block body %}
-    <h1>Edit Task</h1>
+    <!-- Main Sidebar Container -->
+    {{ include('layouts/partials/_sidebar.html.twig', {'tasksActiveClass': 'active'}) }}
 
-    {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1> {{ 'Edit a task'|trans }}</h1>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}"> {{ 'Dashboard'|trans }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ path('task_index') }}"> {{ 'My tasks'|trans }}</a></li>
+                            <li class="breadcrumb-item active"> {{ 'Edit a task'|trans }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <a href="{{ path('task_index') }}">back to list</a>
-
-    {{ include('task/_delete_form.html.twig') }}
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- right column -->
+                    <div class="col-lg-12">
+                        <!-- general form elements disabled -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-user-alt"></i>&nbsp;&nbsp;
+                                    {{ 'Form edition'|trans|upper }}
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                {{ include('task/_form.html.twig', {'Action': 'Edit a task'|trans}) }}
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
 {% endblock %}

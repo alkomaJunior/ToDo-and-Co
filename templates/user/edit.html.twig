@@ -16,6 +16,7 @@
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}"> {{ 'Dashboard'|trans }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ path('user_index') }}"> {{ 'Users'|trans }}</a></li>
                             <li class="breadcrumb-item active"> {{ user.firstName~' '~user.lastName }}</li>
                         </ol>
@@ -35,7 +36,13 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                         src="
+                                            {% if app.user.avatar is not null %}
+                                                {{ vich_uploader_asset(user, 'avatarFile') }}
+                                            {% else %}
+                                               {{ asset('build/app/images/default-pp.png') }}
+                                            {% endif %}
+                                         "
                                          alt="User profile picture">
                                 </div>
 
@@ -88,12 +95,12 @@
                                 <div class="tab-content">
                                     <!-- .tab-pane -->
                                     <div class="active tab-pane" id="edit-user">
-                                        {{ include('user/_form.html.twig') }}
+                                        {{ include('user/_form.html.twig', {'Action': 'Edit a user'|trans}) }}
                                     </div>
                                     <!-- /.tab-pane -->
                                     <!-- .tab-pane -->
-                                    <div class="active tab-pane" id="update-pass">
-
+                                    <div class="tab-pane" id="update-pass">
+                                        {{ include('user/_pwdUpdateForm.html.twig') }}
                                     </div>
                                     <!-- /.tab-pane -->
                                 </div>
@@ -109,4 +116,8 @@
         </section>
         <!-- /.content -->
     </div>
+
+    {% block script %}
+        {{ encore_entry_script_tags('edit-user-forms') }}
+    {% endblock %}
 {% endblock %}

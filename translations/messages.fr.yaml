@@ -1,12 +1,14 @@
 Users: Utilisateurs
 User list: Liste des utilisateurs
+Task list: Liste des tâches
 Firstname: Prénom(s)
 Lastname: Nom
 Account Type: Type de compte
 Email address: Adresse mail
 Add a user: Ajouter un utilisateur
 Cancel: Annuler
-User form creation: Formulaire de creation
+Form creation: Formulaire de creation
+Form edition: Formulaire de modification
 Please choose an account type: Veuillez choisir un type de compte
 Browse: Parcourir
 Location: Adresse
@@ -21,10 +23,30 @@ Remenber me: Se souvenir de moi
 Please sign in: Veuillez vous connecter
 Dashboard: Tableau de bord
 My tasks: Mes tâches
+Other tasks: Autres tâches
 Logout: Déconnexion
 Full screen: Plein écran
 My profile: Mon profil
 Title: Titre
 Status: Status
-Starts at: Commence le
-Ends at: Termine le
+Created at: Crée le
+Updated at: Mis à jour le
+Edit a user: Modifier un utilisateur
+Add a task: Ajouter une tâche
+Task title: Titre de la tâche
+Task description: Description de la tâche
+Edit a task: Modifier une tâche
+Update password: Mettre à jour le mot de passe
+Password: Mot de passe
+Please confirm your password: Veuillez confirmer votre mot de passe
+New password: Nouveau mot de passe
+Avatar: Photo de profil
+Admin password: Mot de passe administrateur
+Simple user: Utilisateur simple
+Administrator: Administrateur
+User successfully created: Utilisateur crée avec succès !
+Task successfully created: Tâche crée avec succès !
+User successfully edited: Utilisateur modifié avec succès !
+Task successfully edited: Tâche modifié avec succès !
+Password successfully edited: Mot de passe modifié avec succès !
+Delete: Supprimer

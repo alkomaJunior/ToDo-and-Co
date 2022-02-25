@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}ToDo & Co{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="text/html" charset="UTF-8">
         <meta content="A Todo list application build in symfony." name="description" />
         <meta content="Alkoma-jr" name="author" />
 
@@ -16,6 +17,7 @@
 
     {% block general %}
         <body class="hold-transition sidebar-mini">
+            {{ include('layouts/partials/_flashMessage.html.twig') }}
             <div class="wrapper">
                 <!-- Navbar -->
                 {{ include('layouts/partials/_navbar.html.twig') }}

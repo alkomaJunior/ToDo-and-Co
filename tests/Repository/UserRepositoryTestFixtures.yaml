@@ -3,9 +3,9 @@ App\Entity\User:
     email: user<current()>\@domain.com
     firstName: userLastName<current()>
     lastName: userFirstName<current()>
-    accountType: SimpleUser
+    accountType: Utilisateur simple
     location: userLocation
     contact: "user contact"
-    password: "\\$argon2i\\$v=19\\$m=16,t=2,p=1\\$dzdLa2pvMjhGVGcwM081Yw\\$lNxz8fPeNKDxahLlQf7QqQ"
+    password: "\\$2y\\$13\\$sp0CG00/rLDbmLGxIZ3Myu10Z6qt.rr9oVN0Ji27xYVFraO/glqi6"
     roles: "[ROLE_USER]"
     slug: user<current()>

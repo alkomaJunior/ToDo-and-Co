@@ -69,8 +69,8 @@ class UserType extends AbstractType
             ->add('accountType', ChoiceType::class, [
                 'label_attr' => ["class" => "col-form-label"],
                 'choices' => [
-                    "Simple user" => "Simple user",
-                    "Administrator" => "Administrator"
+                    "Simple user" => $this->translator->trans('Simple user'),
+                    "Administrator" => $this->translator->trans('Administrator')
                 ],
                 'placeholder' => $this->translator->trans('Please choose an account type')
             ])
@@ -106,7 +106,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'validation_groups' => ['user_creation', 'user_editing'],
+            'validation_groups' => ['user_creation', 'user_editing', 'user_password_update'],
         ]);
     }
 }
