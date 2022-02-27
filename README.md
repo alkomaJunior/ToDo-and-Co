@@ -51,5 +51,5 @@ php bin/console server:run
 ## Documentation API - Swagger
 ```
 https://localhost:8000 (local server)
-https://bilemo-catalog-api.herokuapp.com/api/doc (production server)
+https://github.com/alkomaJunior/ToDo-and-Co
 ```
